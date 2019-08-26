@@ -2,9 +2,7 @@ import re
 from lxml.html import fromstring
 from textblob import TextBlob
 import time
-'''
-Drawback: Extremely slow for complex site like Eventbrite
-'''
+
 def return_selector(html, keyword):
     '''
     Receive an html file's contents and string and return the corresponding xpath selector
