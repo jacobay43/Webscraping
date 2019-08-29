@@ -41,22 +41,7 @@ def return_selector(html, keyword):
 
     
 if __name__ == '__main__':
-    startTime = time.time()
-    with open(r'C:\Users\IRETI\Documents\IT PROGRAM MAIN\zAmpleeFi\Ariiya\terms.html', 'rb') as html:
-        print('Selector:',return_selector(str(html.read()), 'All orders'))
-        print(f'Time Elapsed: {time.time()-startTime:.2f} s')
-        startTime = time.time()
-    with open(r'C:\Users\IRETI\Documents\IT PROGRAM MAIN\zAmpleeFi\Doingsoon\Help, support for organisers and attendees - DoingSoon.html','rb') as html:
-        print('Selector:',return_selector(html.read(), 'Welcome to')) 
-        print(f'Time Elapsed: {time.time()-startTime:.2f} s')
-        startTime = time.time()
-    with open(r'C:\Users\IRETI\Documents\IT PROGRAM MAIN\zAmpleeFi\Afritickets\Afritickets.html', 'rb') as html:
-        print('Selector:',return_selector(html.read(), 'Welcome to')) 
-        print(f'Time Elapsed: {time.time()-startTime:.2f} s')
-        startTime = time.time()
-    #with open(r'C:\Users\IRETI\Documents\IT PROGRAM MAIN\zAmpleeFi\Eventbrite\Eventbrite Terms of Service _ Eventbrite Help Center.html', 'rb') as html:
-    #    print(return_selector(html.read(), "Eventbrite's products"))
-        
+    startTime = time.time()        
     case_1 = '''<h5>
                                               <div class="layer-unwrap">Hello
                                               </div>
@@ -73,7 +58,6 @@ if __name__ == '__main__':
     startTime = time.time()
     print('Selector:',return_selector(case_3, 'Greet'))
     print(f'Time Elapsed: {time.time()-startTime:.2f} s')
-    startTime = time.time()
     print(fromstring(case_3).xpath(return_selector(case_3,'Greet'))[0].text_content())
 
 
