@@ -3,7 +3,7 @@ from urllib.error import URLError
 
 def get_robots_parser(robots_url):
 	'''
-	receives:
+	args:
 		robots_url(str): url of website's robot.txt e.g http://www.a.com/robot.txt
 	returns:
 		rp (robotparser.RobotFileParser)
@@ -14,7 +14,7 @@ def get_robots_parser(robots_url):
 	return rp
 def bot_allowed(user_agent, robots_url, url):
 	'''
-	receives:
+	args:
 		user_agent(str): str representing user_agent of bot
 		robots_url(str): url of website's robot.txt e.g http://www.a.com/robot.txt
 		url(str): url of website e.g http://www.a.com
