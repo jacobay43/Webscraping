@@ -2,11 +2,25 @@ from urllib import robotparser
 from urllib.error import URLError
 
 def get_robots_parser(robots_url):
+	'''
+	receives:
+		robots_url(str): url of website's robot.txt e.g http://www.a.com/robot.txt
+	returns:
+		rp (robotparser.RobotFileParser)
+	'''
 	rp = robotparser.RobotFileParser()
 	rp.set_url(robots_url)
 	rp.read()
 	return rp
 def bot_allowed(user_agent, robots_url, url):
+	'''
+	receives:
+		user_agent(str): str representing user_agent of bot
+		robots_url(str): url of website's robot.txt e.g http://www.a.com/robot.txt
+		url(str): url of website e.g http://www.a.com
+	returns:
+		allowed(bool): True if access is allowed based on site's robot.txt
+	'''
 	allowed = False
 	try:
 		rp = get_robots_parser(robots_url)
@@ -16,7 +30,7 @@ def bot_allowed(user_agent, robots_url, url):
 	return allowed
 
 if __name__ == '__main__':
-	file = open('site_robots_txts.txt', 'r')
+	file = open('site_robots_txts.txt', 'r') #predefined file containing urls of several sites
 	print('\t\t[Output of bot_access_check.py]')
 	print(f'{"Site":>5}{"URL":>25}{"Access":>40}')
 	for line in file:
