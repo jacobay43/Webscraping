@@ -1,7 +1,6 @@
 import re
 import lxml
 from textblob import TextBlob
-from bot_utilities import get_info_from_page
 
 def return_selectors(html, keyword, _filter=['img'], ignore_case=True):
     '''
@@ -77,7 +76,17 @@ def return_selectors(html, keyword, _filter=['img'], ignore_case=True):
         print(e)
         return '//error'
     return "//Missing"
-    
+def get_info_from_page(html,selectors, display=False):
+    tree = fromstring(html)
+    info = []
+    for selector in selectors:
+        info += tree.xpath(selector)
+    info_list = []
+    for data in info:
+        if display:
+            print(data.text_content())
+        info_list += [data.text_content()]
+    return info_list
 if __name__ == '__main__':
     '''
     To filter out multispaces:
@@ -93,7 +102,7 @@ if __name__ == '__main__':
         for selector in selectors:
             try:
                 file.seek(0)
-                content = get_info_from_page(file.read(), selector=selector)
+                content = get_info_from_page(file.read(), [selector])
                 if any((x.isalpha() for x in ' '.join(content))):
                     print(selector,'content:',' '.join(' '.join(content).split()))
                 else:
