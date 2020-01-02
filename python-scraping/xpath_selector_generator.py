@@ -94,7 +94,7 @@ if __name__ == '__main__':
         ' '.join(' '.join(list).split())
     '''
     print('Opening file')
-    with open('links.txt','r') as file:
+    with open('samplepage.html','rb') as file:
         keyword = 'PENCIL'
         print('Generating selectors for',keyword)
         selectors = return_selectors(file.read(), keyword, ignore_case=False)
